@@ -12,6 +12,7 @@ import java.util.HashMap;
 /**
  * Created by LaunchCode
  */
+
 @Controller
 @RequestMapping(value = "list")
 public class ListController {
@@ -37,6 +38,7 @@ public class ListController {
     @RequestMapping(value = "values")
     public String listColumnValues(Model model, @RequestParam String column) {
 
+
         if (column.equals("all")) {
             ArrayList<HashMap<String, String>> jobs = JobData.findAll();
             model.addAttribute("title", "All Jobs");
@@ -59,6 +61,7 @@ public class ListController {
         ArrayList<HashMap<String, String>> jobs = JobData.findByColumnAndValue(column, value);
         model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
         model.addAttribute("jobs", jobs);
+
 
         return "list-jobs";
     }
